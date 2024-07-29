@@ -94,6 +94,12 @@ code {
   font-size:35px;
 }
 
+.coffee-price {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ffd700;
+  margin: 10px 0;
+}
 
 
 /* header */
