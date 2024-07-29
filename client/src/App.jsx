@@ -3,6 +3,7 @@ import { CappuccinoProvider } from './CappuccinoContext';
 import Card from './card.jsx';
 import Header from './header.jsx';
 import Footer from './footer.jsx';
+import './index.css';
 
 const App = () => {
   const coffees = [

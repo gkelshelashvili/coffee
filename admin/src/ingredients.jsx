@@ -32,4 +32,4 @@ const CreateIngredient = () => {
         </form>
     )
 }
-export default CreateIngredient
+export default CreateIngredient;
