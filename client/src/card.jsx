@@ -12,7 +12,7 @@ const images = {
   Americano: americano,
 };
 
-const Card = ({ coffee }) => {
+const Card = ({ coffee,price }) => {
   return (
     <div className="flip-card">
       <div className="flip-card-inner">
@@ -22,6 +22,7 @@ const Card = ({ coffee }) => {
         </div>
         <div className="flip-card-back">
           <p className="coffee-description">{coffee.description}</p>
+          <p className="coffee-price">Price: ${price.toFixed(2)}</p>
           <div className="main-div">
           <ul>
             {coffee.ingredients.map((ingredient, index) => (
