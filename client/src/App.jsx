@@ -7,10 +7,10 @@ import './index.css';
 
 const App = () => {
   const coffees = [
-    { name: 'Cappuccino', description: 'A classic coffee drink', ingredients: ['espresso', 'steamed milk', 'foam'] },
-    { name: 'Latte', description: 'A coffee drink with a lot of milk', ingredients: ['espresso', 'steamed milk'] },
-    { name: 'Mocha', description: 'A coffee drink with chocolate', ingredients: ['espresso', 'steamed milk', 'chocolate syrup'] },
-    { name: 'Americano', description: 'A coffee drink with a lot of water', ingredients: ['espresso', 'water'] },
+    { name: 'Cappuccino', description: 'A classic coffee drink', ingredients: ['espresso', 'steamed milk', 'foam'],price:5.4 },
+    { name: 'Latte', description: 'A coffee drink with a lot of milk', ingredients: ['espresso', 'steamed milk'],price:6.5 },
+    { name: 'Mocha', description: 'A coffee drink with chocolate', ingredients: ['espresso', 'steamed milk', 'chocolate syrup'],price:7.5 },
+    { name: 'Americano', description: 'A coffee drink with a lot of water', ingredients: ['espresso', 'water'],price:3.5 },
   ];
 
   return (
