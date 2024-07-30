@@ -105,27 +105,154 @@ const App = () => {
   console.log(ingredient)
   console.log(coffeList)
 
+  const deleteIngredient = (id) => {
+    fetch(`api/v1/ingredient/${id}`, {
+      method: 'DELETE',
+      headers: {
+        "Authorization": `Bearer ${API_KEY}`
+      }
+    }).then(response => {
+      if(!response.ok) throw new Error("delete failed")
+      setIngredientList(prev => prev.filter(ing => ing.id !== id))
+    })
+    .catch(error => console.log(error))
+  }
+
+  const deleteProduct = (id) => {
+    fetch(`api/v1/coffe/${id}`, {
+      method: 'DELETE',
+      headers: {
+        "Authorization": `Bearer ${API_KEY}`
+      }
+    }).then(response => {
+      if(!response.ok) throw new Error("delete failed")
+      setCoffeList(prev => prev.filter(coffee => coffee.id !== id))
+    })
+    .catch(error => console.log(error))
+  }
+
+  
+  const updateIngredient = (id, updatedData) => {
+    fetch(`api/v1/ingredient/${id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify(updatedData)
+    }).then(response => {
+      if(!response.ok) throw new Error("update failed")
+      return response.json()
+    })
+    .then(data => {
+      setIngredientList(prev => prev.map(ing => 
+        ing.id === id ? {...ing, ...data.items[0]} : ing
+      ))
+    })
+    .catch(error => console.log(error))
+  }
+
+  const updateProduct = (id, updatedData) => {
+    fetch(`api/v1/coffe/${id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify(updatedData)
+    }).then(response => {
+      if(!response.ok) throw new Error("update failed")
+      return response.json()
+    })
+    .then(data => {
+      setCoffeList(prev => prev.map(coffee => 
+        coffee.id === id ? {...coffee, ...data.items[0]} : coffee
+      ))
+    })
+    .catch(error => console.log(error))
+  }
+
+  const [editingId, setEditingId] = useState(null);
+
   return (
     <div>
       <IngredientForm onFormSubmit={onFormSubmit}/>
       <ProductForm onProduct={onProduct}/>
         {/* INGREDIENTEBIS MAPI */}
-      {/* {ingredient.map((ing) => <div key={ing.id} className='wrapper'>
-            <h1>{ing.name}</h1>
-            <h1>{ing.price}</h1>
-            <h1>{ing.description}</h1>
-            <button>Del</button>
-            <button>Edit</button>
-      </div>)} */}
+        {ingredient.map((ing) => (
+     <div key={ing.id} className='wrapper'>{
+      
+      editingId === ing.id ? (
+      <>
+        <input 
+          defaultValue={ing.name} 
+          onChange={(e) => ing.name = e.target.value}/>
+
+        <input 
+          defaultValue={ing.price} 
+          onChange={(e) => ing.price = e.target.value}/>
+
+        <input 
+          defaultValue={ing.description} 
+          onChange={(e) => ing.description = e.target.value}/>
+
+        <button onClick={() => {
+          updateIngredient(ing.id, ing);
+          setEditingId(null);
+        }}>Save</button>
+
+        <button onClick={() => setEditingId(null)}>Cancel</button>
+      </>
+    ) : (
+      <>
+        <h1>{ing.name}</h1>
+        <h1>{ing.price}</h1>
+        <h1>{ing.description}</h1>
+        <button onClick={() => deleteIngredient(ing.id)}>Delete</button>
+        <button onClick={() => setEditingId(ing.id)}>Edit</button>
+      </>
+    )}
+  </div>
+))}
       {/* KAVIS MAPI */}
-        {coffeList.map((coffe) => <div key={coffe.id} className='wrapper'>
-            <h1>{coffe.description}</h1>
-            <h1>{coffe.ingredinets}</h1>
-            <h1>{coffe.price}</h1>
-            <h1>{coffe.title}</h1>
-            <button>Del</button>
-            <button>Edit</button>
-      </div>)}
+      {coffeList.map((coffe) => (
+  <div key={coffe.id} className='wrapper'>
+    {editingId === coffe.id ? (
+      <>
+        <input 
+          defaultValue={coffe.title} 
+          onChange={(e) => coffe.title = e.target.value}
+        />
+        <input 
+          defaultValue={coffe.price} 
+          onChange={(e) => coffe.price = e.target.value}
+        />
+        <input 
+          defaultValue={coffe.description} 
+          onChange={(e) => coffe.description = e.target.value}
+        />
+        <input 
+          defaultValue={coffe.ingredinets} 
+          onChange={(e) => coffe.ingredinets = e.target.value}
+        />
+        <button onClick={() => {
+          updateProduct(coffe.id, coffe);
+          setEditingId(null);
+        }}>Save</button>
+        <button onClick={() => setEditingId(null)}>Cancel</button>
+      </>
+    ) : (
+      <>
+        <h1>{coffe.title}</h1>
+        <h1>{coffe.price}</h1>
+        <h1>{coffe.description}</h1>
+        <h1>{coffe.ingredinets}</h1>
+        <button onClick={() => deleteProduct(coffe.id)}>Delete</button>
+        <button onClick={() => setEditingId(coffe.id)}>Edit</button>
+      </>
+    )}
+  </div>
+))}
     </div>
   )
 }
