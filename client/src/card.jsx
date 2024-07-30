@@ -1,8 +1,8 @@
 import React from 'react';
-import cappuccino from './images/cappuccino.PNG';
-import latte from './images/latte.PNG';
-import mocha from './images/mocha.PNG';
-import americano from './images/americano.PNG';
+import cappuccino from './cappuccino.PNG';
+import latte from './latte.PNG';
+import mocha from './mocha.PNG';
+import americano from './americano.PNG';
 
 
 const images = {
@@ -22,12 +22,12 @@ const Card = ({ coffee,price }) => {
         </div>
         <div className="flip-card-back">
           <p className="coffee-description">{coffee.description}</p>
-          <p className="coffee-price">Price: ${coffee.price.toFixed(2)}</p>
+          <p className="coffee-price">Price: ${coffee.price}</p>
           <div className="main-div">
           <ul>
-            {coffee.ingredients.map((ingredient, index) => (
+            {/* {coffee.ingredients.map((ingredient, index) => (
               <li className="ingredients" key={index}>{ingredient}</li>
-            ))}
+            ))} */}
           </ul>
           </div>
         </div>

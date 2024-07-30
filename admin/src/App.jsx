@@ -184,7 +184,7 @@ const App = () => {
       
       editingId === ing.id ? (
       <>
-        <input 
+        <input  
           defaultValue={ing.name} 
           onChange={(e) => ing.name = e.target.value}/>
 
@@ -208,8 +208,8 @@ const App = () => {
         <h1>{ing.name}</h1>
         <h1>{ing.price}</h1>
         <h1>{ing.description}</h1>
-        <button onClick={() => deleteIngredient(ing.id)}>Delete</button>
-        <button onClick={() => setEditingId(ing.id)}>Edit</button>
+        <button className='del' onClick={() => deleteIngredient(ing.id)}>Delete</button>
+        <button className='edit' onClick={() => setEditingId(ing.id)}>Edit</button>
       </>
     )}
   </div>
@@ -247,8 +247,8 @@ const App = () => {
         <h1>{coffe.price}</h1>
         <h1>{coffe.description}</h1>
         <h1>{coffe.ingredinets}</h1>
-        <button onClick={() => deleteProduct(coffe.id)}>Delete</button>
-        <button onClick={() => setEditingId(coffe.id)}>Edit</button>
+        <button className='del' onClick={() => deleteProduct(coffe.id)}>Delete</button>
+        <button className='edit' onClick={() => setEditingId(coffe.id)}>Edit</button>
       </>
     )}
   </div>

@@ -146,3 +146,54 @@
   .footer a:hover {
     color: #ccc;
   }
+
+  
+.text {
+  text-align: center;
+  font-size: 25px;
+}
+
+.ingredinet {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  margin: auto;
+}
+
+.ingredinet input {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.btn {
+  margin-top: 15px;
+  height: 35px;
+  width: 50%;
+  margin: auto;
+  border-radius: 9px;
+  background-color: yellow;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+
+.del {
+  background-color: red;
+  font-size: 15px;
+  padding: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.edit {
+  background-color: rgb(187, 0, 255);
+  font-size: 15px;
+  padding: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
