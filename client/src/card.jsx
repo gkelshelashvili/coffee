@@ -22,7 +22,7 @@ const Card = ({ coffee,price }) => {
         </div>
         <div className="flip-card-back">
           <p className="coffee-description">{coffee.description}</p>
-          <p className="coffee-price">Price: ${price.toFixed(2)}</p>
+          <p className="coffee-price">Price: ${coffee.price.toFixed(2)}</p>
           <div className="main-div">
           <ul>
             {coffee.ingredients.map((ingredient, index) => (
