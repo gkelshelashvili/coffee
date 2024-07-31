@@ -1,8 +1,8 @@
 import React from 'react';
 import { CappuccinoProvider } from './CappuccinoContext';
-import Card from './card.jsx';
-import Header from './header.jsx';
-import Footer from './footer.jsx';
+import Card from './Card.jsx';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 import './index.css';
 
 const App = () => {
